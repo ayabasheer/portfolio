@@ -1,3 +1,5 @@
+
+// Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeTheme();
     initializeParticles();
@@ -12,8 +14,8 @@ function initializeTheme() {
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
     
-    // Check for saved theme preference or default to light mode
-    const currentTheme = localStorage.getItem('theme') || 'light';
+    // ✅ Default to dark mode now
+    const currentTheme = localStorage.getItem('theme') || 'dark';
     body.setAttribute('data-theme', currentTheme);
     updateThemeIcon(currentTheme);
     

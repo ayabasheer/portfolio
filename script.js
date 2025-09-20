@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollAnimations();
 });
 
-// Dark Mode Toggle
+// Theme Toggle
 function initializeTheme() {
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
     
-    // ✅ Default to dark mode now
+    // Default to dark mode
     const currentTheme = localStorage.getItem('theme') || 'dark';
     body.setAttribute('data-theme', currentTheme);
     updateThemeIcon(currentTheme);
@@ -77,8 +77,7 @@ function initializeAnimations() {
     const fadeInObserver = new IntersectionObserver(function(entries, observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
                 
                 // Animate progress bars when skills section is visible
@@ -90,9 +89,6 @@ function initializeAnimations() {
     }, fadeInOptions);
     
     fadeElements.forEach(element => {
-        element.style.opacity = 0;
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
         fadeInObserver.observe(element);
     });
 }
@@ -120,14 +116,32 @@ function initializeScrollAnimations() {
 // Navigation
 function initializeNavigation() {
     // Mobile menu toggle
-    const menuBtn = document.querySelector('.menu-btn');
-    const navLinks = document.querySelector('.nav-links');
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const overlay = document.getElementById('overlay');
     
-    if (menuBtn && navLinks) {
-    menuBtn.addEventListener('click', function() {
-        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
+    function openMobileNav() {
+        mobileNav.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
+    
+    function closeMobileNav() {
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+    
+    menuBtn.addEventListener('click', openMobileNav);
+    closeBtn.addEventListener('click', closeMobileNav);
+    overlay.addEventListener('click', closeMobileNav);
+    
+    // Close mobile nav when clicking on links
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', closeMobileNav);
+    });
     
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -139,11 +153,6 @@ function initializeNavigation() {
                     behavior: 'smooth',
                     block: 'start'
                 });
-                
-                // Close mobile menu if open
-                if (navLinks && navLinks.style.display === 'flex') {
-                    navLinks.style.display = 'none';
-                }
             }
         });
     });
@@ -253,7 +262,7 @@ function animateProgressBars() {
         bar.style.width = '0%';
         setTimeout(() => {
             bar.style.width = width;
-        },width*200);
+        }, index * 200);
     });
 }
 
@@ -294,3 +303,4 @@ document.addEventListener('mousemove', function(e) {
         particle.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
     });
 });
+

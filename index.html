@@ -12,6 +12,23 @@
     <!-- Particles Background -->
     <div class="particles" id="particles"></div>
     
+    <!-- Mobile Navigation Overlay -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="close-btn" id="closeBtn">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#about" onclick="closeMobileNav()">About</a></li>
+            <li><a href="#projects" onclick="closeMobileNav()">Projects</a></li>
+            <li><a href="#education" onclick="closeMobileNav()">Education</a></li>
+            <li><a href="#skills" onclick="closeMobileNav()">Skills</a></li>
+            <li><a href="#contact" onclick="closeMobileNav()">Contact</a></li>
+        </ul>
+    </div>
+    
     <!-- Header -->
     <header>
         <div class="container">
@@ -28,8 +45,8 @@
                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
                         <i class="fas fa-moon"></i>
                     </button>
-                <div class="menu-btn">
-                    <i class="fas fa-bars"></i>
+                    <div class="menu-btn" id="menuBtn">
+                        <i class="fas fa-bars"></i>
                     </div>
                 </div>
             </nav>
@@ -41,7 +58,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text fade-in">
-                    <h1>Hi, I'm <span>Aya Basheer</span></h1>
+                    <h1>Hi, I'm Aya Basheer</h1>
                     <div class="hero-badge"><h3>Full Stack Developer</h3> </div>
                     <p>I'm a passionate full-stack developer specializing in PHP Laravel API development. I love creating innovative solutions and bringing ideas to life through code.</p>
                     <div class="hero-stats">
@@ -93,14 +110,14 @@
                     <p>Currently, I'm enhancing my expertise through the ITI training program in Full Stack development using PHP. I'm passionate about creating efficient, scalable web applications that solve real-world problems.</p>
                 </div>
                 <div class="about-image fade-in delay-1">
-                    <img src="imgs/Untitled design.png" alt="Aya Basheer">
+                    <img src="./imgs/Untitled design.png" alt="Aya Basheer">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" >
+    <section id="projects">
         <div class="container">
             <div class="section-title fade-in">
                 <h2>Featured Projects</h2>
@@ -119,7 +136,7 @@
                     </div>
                     <div class="project-content">
                         <h3>E-commerce Platform</h3>
-                        <p>A full-stack e-commerce solution , featuring user authentication, payment integration, and admin dashboard.</p>
+                        <p>A full-stack e-commerce solution, featuring user authentication, payment integration, and admin dashboard.</p>
                         <div class="project-tech">
                             <span class="tech-tag">HTML5</span>
                             <span class="tech-tag">CSS3</span>
@@ -178,7 +195,7 @@
     </section>
 
     <!-- Education & Certifications -->
-    <section id="education" >
+    <section id="education">
         <div class="container">
             <div class="section-title fade-in">
                 <h2>Education & Certifications</h2>
@@ -379,7 +396,7 @@
             <div class="contact-container">
                 <div class="contact-info fade-in">
                     <h3>Let's Work Together</h3>
-                <p>I'm currently available for freelance work and full-time opportunities. If you have a project that you want to get started or think you need my help with something, then get in touch.</p>
+                    <p>I'm currently available for freelance work and full-time opportunities. If you have a project that you want to get started or think you need my help with something, then get in touch.</p>
                     
                     <div class="contact-details">
                         <div class="contact-item">
@@ -405,7 +422,7 @@
                         </div>
                     </div>
                     
-                <div class="social-links">
+                    <div class="social-links">
                         <a href="www.linkedin.com/in/aya-basheer" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                         <a href="https://github.com/ayabasheer" class="social-link"><i class="fab fa-github"></i></a>
                     </div>
@@ -432,8 +449,6 @@
         </div>
     </section>
 
-    <script src="./script.js"></script>
-
-
+<script src="./script.js"></script>
 </body>
 </html>

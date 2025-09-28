@@ -258,10 +258,18 @@ function showNotification(message, type = 'info') {
 function animateProgressBars() {
     const progressBars = document.querySelectorAll('.progress-fill');
     progressBars.forEach((bar, index) => {
-        const width = bar.style.width;
+        // Get the class name for the skill (e.g., html, css, etc.)
+        const classList = Array.from(bar.classList);
+        const skillClass = classList.find(cls => cls !== 'progress-fill');
+        // Get the percentage from the corresponding .progress-percentage element
+        const percentageElem = bar.parentElement.querySelector('.progress-percentage');
+        let percent = 0;
+        if (percentageElem) {
+            percent = parseInt(percentageElem.textContent);
+        }
         bar.style.width = '0%';
         setTimeout(() => {
-            bar.style.width = width;
+            bar.style.width = percent + '%';
         }, index * 200);
     });
 }

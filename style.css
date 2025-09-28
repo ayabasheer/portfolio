@@ -774,18 +774,41 @@ section {
     color: var(--dark);
 }
 
+
 .progress-bar {
+    width: 100%;
+    max-width: 350px;
     height: 8px;
     background-color: var(--light);
     border-radius: 10px;
     overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    display: block;
 }
 
 .progress-fill {
+    width: 0%;
     height: 100%;
     background: linear-gradient(90deg, var(--primary), var(--secondary));
     border-radius: 10px;
-    transition: width 1s ease;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.progress-percentage {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) translateX(110%);
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 1.1em;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .progress-fill.laravel {
